@@ -1,0 +1,39 @@
+{
+  "name": "MindGrid - Task Management & Productivity",
+  "short_name": "MindGrid",
+  "description": "The ultimate desktop productivity app for categorizing, creating, and managing tasks efficiently. Transform chaos into clarity.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#d87943",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["productivity", "business", "utilities"],
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "windows",
+      "url": "https://mindgrid.netlify.app/rituraj.exe"
+    },
+    {
+      "platform": "macos",
+      "url": "https://mindgrid.app//rituraj.exe"
+    },
+    {
+      "platform": "linux",
+      "url": "https://mindgrid.app//rituraj.exe"
+    }
+  ],
+  "prefer_related_applications": true,
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7"
+}
