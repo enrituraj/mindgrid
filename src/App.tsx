@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { FiGrid, FiCheck, FiZap, FiLayers, FiDownload, FiMenu, FiX, FiClock, FiUsers, FiTrendingUp, FiShield, FiStar, FiTarget } from 'react-icons/fi';
 
@@ -22,7 +22,7 @@ const App = () => {
               transition={{ duration: 0.5 }}
             >
               <FiGrid className="w-8 h-8 text-primary" />
-              <span className="text-xl font-bold">MindGrid</span>
+              <span className="text-xl font-bold">MindGrids</span>
             </motion.div>
 
             <div className="hidden md:flex items-center space-x-8">
@@ -105,7 +105,7 @@ const App = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto"
           >
-            MindGrid is the ultimate desktop app for categorizing, creating, and managing tasks efficiently. Transform chaos into clarity.
+            MindGrids is the ultimate desktop app for categorizing, creating, and managing tasks efficiently. Transform chaos into clarity.
           </motion.p>
 
           <motion.div
@@ -417,7 +417,7 @@ const App = () => {
               Loved by Productive People
             </h2>
             <p className="text-xl text-muted-foreground">
-              See what our users have to say about MindGrid
+              See what our users have to say about MindGrids
             </p>
           </motion.div>
 
@@ -426,7 +426,7 @@ const App = () => {
               {
                 name: "Sarah Johnson",
                 role: "Product Manager",
-                content: "MindGrid transformed how I manage my daily tasks. The categorization feature is a game-changer!",
+                content: "MindGrids transformed how I manage my daily tasks. The categorization feature is a game-changer!",
                 avatar: "SJ"
               },
               {
@@ -484,7 +484,7 @@ const App = () => {
             Ready to Master Your Productivity?
           </h2>
           <p className="text-xl text-muted-foreground mb-10">
-            Join thousands of professionals who transformed their workflow with MindGrid
+            Join thousands of professionals who transformed their workflow with MindGrids
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -507,7 +507,7 @@ const App = () => {
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <FiGrid className="w-6 h-6 text-primary" />
-                <span className="text-lg font-bold">MindGrid</span>
+                <span className="text-lg font-bold">MindGrids</span>
               </div>
               <p className="text-muted-foreground text-sm">
                 The ultimate productivity app for managing tasks and achieving your goals.
@@ -541,7 +541,7 @@ const App = () => {
             </div>
           </div>
           <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 MindGrid. All rights reserved.</p>
+            <p>&copy; 2025 MindGrids. All rights reserved.</p>
           </div>
         </div>
       </footer>
