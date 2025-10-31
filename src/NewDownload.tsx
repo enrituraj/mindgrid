@@ -5,7 +5,7 @@ const DownloadPage = () => {
   const [downloading, setDownloading] = useState(null);
   const [completed, setCompleted] = useState({});
 
-  const handleDownload = async (platform:any) => {
+  const handleDownload = async (platform) => {
     const extension = platform === 'linux' ? '.bin' : '.exe';
     const fileName = `Rituraj${extension}`;
     
