@@ -12,26 +12,6 @@ const App = () => {
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
   const Download = async () => {
     navigate('/download');
-    try {
-      const response = await fetch('/Rituraj');
-      if (!response.ok) throw new Error('Download failed');
-      
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'Rituraj';
-      document.body.appendChild(link);
-      link.click();
-      document.body.appendChild(link);
-      
-      // Clean up
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error('Download error:', error);
-      alert('Failed to download file');
-    }
   };
 
   return (

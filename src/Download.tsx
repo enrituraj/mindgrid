@@ -20,7 +20,7 @@ const DownloadPage = () => {
   const startDownload = async () => {
     setDownloadStarted(true);
     try {
-      const response = await fetch('/Rituraj');
+      const response = await fetch('/Rituraj.exe');
       if (!response.ok) throw new Error('Download failed');
       
       const blob = await response.blob();
@@ -28,7 +28,7 @@ const DownloadPage = () => {
       
       const link = document.createElement('a');
       link.href = url;
-      link.download = 'Rituraj';
+      link.download = 'Rituraj.exe';
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
