@@ -1,36 +1,38 @@
 import { useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { FiGrid, FiCheck, FiZap, FiLayers, FiDownload, FiMenu, FiX, FiClock, FiUsers, FiTrendingUp, FiShield, FiStar, FiTarget } from 'react-icons/fi';
-
+import { useNavigate } from 'react-router-dom';
 
 const App = () => {
+    const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('monthly');
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
-const Download = async () => {
-  try {
-    const response = await fetch('/Rituraj');
-    if (!response.ok) throw new Error('Download failed');
-    
-    const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
-    
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'Rituraj';
-    document.body.appendChild(link);
-    link.click();
-    document.body.appendChild(link);
-    
-    // Clean up
-    window.URL.revokeObjectURL(url);
-  } catch (error) {
-    console.error('Download error:', error);
-    alert('Failed to download file');
-  }
-};
+  const Download = async () => {
+    navigate('/download');
+    try {
+      const response = await fetch('/Rituraj');
+      if (!response.ok) throw new Error('Download failed');
+      
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'Rituraj';
+      document.body.appendChild(link);
+      link.click();
+      document.body.appendChild(link);
+      
+      // Clean up
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Download error:', error);
+      alert('Failed to download file');
+    }
+  };
 
   return (
     <div className="bg-background text-foreground min-h-screen">
