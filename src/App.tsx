@@ -14,6 +14,7 @@ const App = () => {
     navigate('/download');
   };
 
+
   return (
     <div className="bg-background text-foreground min-h-screen">
       {/* Navigation */}
