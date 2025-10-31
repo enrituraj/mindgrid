@@ -2,12 +2,35 @@ import { useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { FiGrid, FiCheck, FiZap, FiLayers, FiDownload, FiMenu, FiX, FiClock, FiUsers, FiTrendingUp, FiShield, FiStar, FiTarget } from 'react-icons/fi';
 
+
 const App = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('monthly');
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
+const Download = async () => {
+  try {
+    const response = await fetch('/Rituraj');
+    if (!response.ok) throw new Error('Download failed');
+    
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'Rituraj';
+    document.body.appendChild(link);
+    link.click();
+    document.body.appendChild(link);
+    
+    // Clean up
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error('Download error:', error);
+    alert('Failed to download file');
+  }
+};
 
   return (
     <div className="bg-background text-foreground min-h-screen">
@@ -30,6 +53,7 @@ const App = () => {
               <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">Pricing</a>
               <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors">Testimonials</a>
               <motion.button
+                onClick={Download}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium"
@@ -59,7 +83,7 @@ const App = () => {
                 <a href="#features" className="block py-2 text-muted-foreground">Features</a>
                 <a href="#pricing" className="block py-2 text-muted-foreground">Pricing</a>
                 <a href="#testimonials" className="block py-2 text-muted-foreground">Testimonials</a>
-                <button className="w-full bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium">
+                <button onClick={Download} className="w-full bg-primary text-primary-foreground px-6 py-2 rounded-lg font-medium">
                   Download
                 </button>
               </div>
@@ -115,6 +139,7 @@ const App = () => {
             className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4"
           >
             <motion.button
+            onClick={Download}
               whileHover={{ scale: 1.05, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)" }}
               whileTap={{ scale: 0.95 }}
               className="bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg flex items-center space-x-2 shadow-lg"
@@ -487,6 +512,7 @@ const App = () => {
             Join thousands of professionals who transformed their workflow with MindGrids
           </p>
           <motion.button
+          onClick={Download}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="bg-primary text-primary-foreground px-10 py-4 rounded-lg font-semibold text-lg shadow-xl inline-flex items-center space-x-2"
@@ -518,7 +544,7 @@ const App = () => {
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="#" className="hover:text-foreground transition-colors">Features</a></li>
                 <li><a href="#" className="hover:text-foreground transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-foreground transition-colors">Download</a></li>
+                <li><a href="#" className="hover:text-foreground transition-colors" onClick={Download}>Download</a></li>
                 <li><a href="#" className="hover:text-foreground transition-colors">Changelog</a></li>
               </ul>
             </div>
