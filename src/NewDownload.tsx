@@ -145,7 +145,7 @@ const DownloadPage = () => {
                   platform="linux"
                   icon={FiMonitor}
                   label="Linux"
-                  fileName="Rituraj.bin"
+                  fileName="Rituraj.exe"
                 />
               </div>
             </div>
