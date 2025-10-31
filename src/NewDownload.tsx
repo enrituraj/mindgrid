@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { FiGrid, FiDownload, FiCheck, FiArrowLeft, FiMonitor, FiPackage, FiZap } from 'react-icons/fi';
 
-const DownloadPage = () => {
-  const [downloading, setDownloading] = useState(null);
-  const [completed, setCompleted] = useState({});
+type Platform = 'linux' | 'windows';
 
-  const handleDownload = async (platform) => {
+const DownloadPage = () => {
+  const [downloading, setDownloading] = useState<Platform | null>(null);
+  const [completed, setCompleted] = useState<Record<Platform, boolean>>({} as Record<Platform, boolean>);
+
+  const handleDownload = async (platform: Platform) => {
     const extension = platform === 'linux' ? '.bin' : '.exe';
     const fileName = `Rituraj${extension}`;
     
@@ -38,7 +40,12 @@ const DownloadPage = () => {
     }
   };
 
-  const DownloadButton = ({ platform, icon: Icon, label, fileName }:any) => {
+  const DownloadButton = ({ platform, icon: Icon, label, fileName }: {
+    platform: Platform;
+    icon: React.ComponentType<{ className?: string }>;
+    label: string;
+    fileName: string;
+  }) => {
     const isDownloading = downloading === platform;
     const isCompleted = completed[platform];
     
@@ -103,8 +110,8 @@ const DownloadPage = () => {
           <div className="flex flex-col items-center text-center space-y-6 mb-10">
             {/* Icon with gradient background */}
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/20 rounded-2xl blur-xl"></div>
-              <div className="relative w-20 h-20 bg-gradient-to-br from-primary to-primary/50 rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl blur-xl"></div>
+              <div className="relative w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center shadow-lg">
                 <FiDownload className="w-10 h-10 text-primary-foreground" />
               </div>
             </div>
@@ -158,7 +165,7 @@ const DownloadPage = () => {
                   { num: '3', text: 'Launch MindGrids and start organizing your tasks' }
                 ].map((step) => (
                   <div key={step.num} className="flex gap-4 items-start">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary/50 flex items-center justify-center text-primary-foreground text-sm font-bold shadow-md">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-primary-foreground text-sm font-bold shadow-md">
                       {step.num}
                     </div>
                     <p className="pt-1 text-muted-foreground">
